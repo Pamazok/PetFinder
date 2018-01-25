@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    <div class="form-group">
+        <label>Month</label>
+        <select id="ms" multiple="multiple">
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+        </select>
+    </div>
+    <p><a href="http://asp.net" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+</div>
+
+<div class="row align-items-center">
+    @{
+        List<PetFinder.Code.DBclasses.Pet> pets = PetFinder.Code.DBfunctions.getAllPets();
+
+        int eachNrows = 0;
+        foreach (PetFinder.Code.DBclasses.Pet pet in pets)
+        {
+            <div class="col-md-4 align-items-center">
+                <h2>@pet.name</h2>
+                <p>
+
+                    @if (pet.photos.Length >= 1)
+                    {
+                        string rigthPath = pet.photos[0].Replace("/", "\\");
+                        rigthPath = rigthPath.Substring(PetFinder.Code.Constants.PetsPicturesPath.Length, rigthPath.Length - PetFinder.Code.Constants.PetsPicturesPath.Length); //substring убирает content/pictures/objects
+                        System.Drawing.Image objImage = System.Drawing.Image.FromFile(PetFinder.Code.Constants.PetsPictures + rigthPath);
+                        KeyValuePair<int, int> result = PetFinder.Code.Functions.NewPicturesSize(objImage.Width, objImage.Height, 320, 240);
+                        <img src="@pet.photos[0]" width="@result.Key" height="@result.Value" alt="@result.Key and @result.Value" />
+                    }
+
+                </p>
+                <p>
+                    <a class="btn btn-default" href="/Home/Pet/@pet.id">Подробнее &raquo;</a>
+                </p>
+            </div>
+                    eachNrows++;
+                    if (eachNrows == 3)
+                    {
+                        eachNrows = 0;
+                        <div class="clearfix"></div>
+                    }
+        }
+    }
+
+</div>

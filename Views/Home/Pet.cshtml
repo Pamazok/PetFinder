@@ -1,0 +1,42 @@
+﻿@model PetFinder.Code.DBclasses.Pet
+
+@{
+    ViewBag.Title = "PetFinder - " + @Model.name;
+}
+
+<div id="cbp-fwslider" class="cbp-fwslider">
+    <ul>
+    @{
+        foreach (string photo in Model.photos)
+        {
+            <li>
+                <img src="@photo" width="100%" height="100%"/>
+            </li>
+        }
+    }
+    </ul>
+</div>
+
+    <div>
+        <h3>
+            новый заголовок
+        </h3>
+        <p>
+            Новый текст
+        </p>
+        <p>Пол и вид животного</p>
+        <p>Описание</p>
+        <p>Код (+ квартинка) </p>
+        <p>Стерилизованна?</p>
+        <p>С паспортом?</p>
+        <p>Потерялась?</p>
+        <p>Привита?</p>
+        <p>дата рождение (примерно)</p>
+        <p>Инвалид ?</p>
+        <p>Если инвалид - описание</p>
+        <p>Адрес где сейчас (если есть)</p>
+        <p>Цена - если не ровна 0</p>
+        <p>Звонить от и до</p>
+        <p>Регион (вероятно в будущем)</p>
+    </div>
+

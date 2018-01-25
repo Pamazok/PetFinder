@@ -1,0 +1,32 @@
+#passwords
+Code/Passwords.cs
+
+# execs and libs
+bin/*.*
+
+# pictures
+gfx/
+Content/pictures/
+*.png
+*.jpg
+*.bmp
+
+# C#
+Project_Readme.html
+*.suo
+*.user
+*.sln.docstates
+[Dd]ebug/
+[Rr]elease/
+x64/
+[Bb]in/
+[Oo]bj/
+*.aps
+*.ncb
+*.opensdf
+*.sdf
+*.cachefile
+*.psess
+*.vsp
+*.vspx
+*.Cache
